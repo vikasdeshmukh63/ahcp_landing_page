@@ -10,7 +10,7 @@ const GLOBE_CONFIG = {
   width: 800,
   height: 800,
   onRender: () => {},
-  devicePixelRatio: 2,
+  devicePixelRatio: 1.5,
   phi: 0,
   theta: 0.3,
   dark: 0,
@@ -73,18 +73,24 @@ export function Globe({
       }
     }
 
+    const pixelRatio =
+      typeof window !== 'undefined'
+        ? Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2)
+        : 2
+
     window.addEventListener("resize", onResize)
     onResize()
 
     const globe = createGlobe(canvasRef.current, {
       ...config,
-      width: widthRef.current * 2,
-      height: widthRef.current * 2,
+      devicePixelRatio: pixelRatio,
+      width: widthRef.current * pixelRatio,
+      height: widthRef.current * pixelRatio,
       onRender: (state) => {
         if (!pointerInteracting.current) phiRef.current += 0.005
         state.phi = phiRef.current + rs.get()
-        state.width = widthRef.current * 2
-        state.height = widthRef.current * 2
+        state.width = widthRef.current * pixelRatio
+        state.height = widthRef.current * pixelRatio
       },
     })
 

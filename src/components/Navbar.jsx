@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import Button from './ui/Button.jsx'
-import { motion } from 'motion/react'
 
 const navLinks = [
   { label: 'Architecture', href: '#architecture' },
@@ -9,51 +11,130 @@ const navLinks = [
 ]
 
 export default function Navbar({ activeThemeLabel, onThemeToggle }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  function closeMenu() {
+    setMenuOpen(false)
+  }
+
   return (
     <motion.header
-      className="sticky top-4 z-50 px-4 sm:px-6 lg:px-8"
-      initial={{ opacity: 0, y: -18 }}
+      className="sticky top-2 z-50 px-3 sm:top-4 sm:px-6 lg:px-8"
+      initial={reduceMotion ? false : { opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: 'easeOut' }}
     >
       <motion.div
-        className="mx-auto w-full max-w-7xl rounded-full border border-white/10 bg-[#060d1f]/85 p-2 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.65)] backdrop-blur-md"
-        whileHover={{ y: -2 }}
+        className="mx-auto w-full max-w-7xl rounded-2xl border border-white/10 bg-[#060d1f]/90 p-2 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.65)] backdrop-blur-md sm:rounded-full"
+        whileHover={reduceMotion ? undefined : { y: -2 }}
         transition={{ duration: 0.25 }}
       >
-        <nav className="flex items-center justify-between gap-4">
-          <motion.a href="#top" className="flex h-12 items-center rounded-full px-4 text-lg font-bold tracking-tight text-white" whileHover={{ scale: 1.04 }}>
-            <img src="/logo.png" alt="ETIP" width={65} height={65} />
+        <nav className="flex items-center justify-between gap-2 sm:gap-4">
+          <motion.a
+            href="#top"
+            className="flex h-10 shrink-0 items-center rounded-full px-2 sm:h-12 sm:px-4"
+            whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+            onClick={closeMenu}
+          >
+            <img
+              src="/logo.png"
+              alt="ETIP"
+              width={52}
+              height={52}
+              className="h-9 w-auto sm:h-11"
+            />
           </motion.a>
-          <div className="hidden items-center gap-2 md:flex">
+
+          <motion.div className="hidden items-center gap-1 md:flex lg:gap-2">
             {navLinks.map((link) => (
               <motion.a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-[rgb(var(--accent-rgb))]"
-                whileHover={{ y: -2 }}
+                className="rounded-full px-3 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-[rgb(var(--accent-rgb))] lg:px-4"
+                whileHover={reduceMotion ? undefined : { y: -2 }}
                 transition={{ duration: 0.2 }}
               >
                 {link.label}
               </motion.a>
             ))}
-          </div>
-          <div className="flex items-center gap-2">
+          </motion.div>
+
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={onThemeToggle}
-              className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-200 transition hover:border-[rgb(var(--accent-rgb))]/50 hover:text-[rgb(var(--accent-rgb))]"
+              className="rounded-full border border-white/20 bg-white/5 px-2.5 py-1.5 text-[10px] font-semibold text-slate-200 transition hover:border-[rgb(var(--accent-rgb))]/50 hover:text-[rgb(var(--accent-rgb))] sm:px-4 sm:py-2 sm:text-xs"
               aria-label="Switch accent color (blue or lime)"
             >
               {activeThemeLabel}
             </button>
-            <a href="#cta">
-              <Button variant="lime" className="h-12 px-6 text-base">
+            <a href="#cta" className="hidden sm:inline">
+              <Button variant="lime" className="h-10 px-4 text-sm sm:h-12 sm:px-6 sm:text-base">
                 Book Now
               </Button>
             </a>
+            <button
+              type="button"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:bg-white/10 md:hidden"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </nav>
+
+        <AnimatePresence>
+          {menuOpen ? (
+            <motion.div
+              id="mobile-nav"
+              className="border-t border-white/10 px-2 pb-2 pt-2 md:hidden"
+              initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+              transition={{ duration: 0.22 }}
+            >
+              <ul className="flex flex-col gap-1">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="block rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-[rgb(var(--accent-rgb))]"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+                <li className="pt-1">
+                  <a href="#cta" onClick={closeMenu} className="block">
+                    <Button variant="lime" className="w-full py-3 text-base">
+                      Book Now
+                    </Button>
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
       </motion.div>
     </motion.header>
   )

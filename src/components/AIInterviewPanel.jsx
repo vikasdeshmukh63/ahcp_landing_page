@@ -44,11 +44,11 @@ export default function AIInterviewPanel() {
   return (
     <ParallaxSection
       id="ai-panel"
-      className="border-t border-white/5 bg-[#040814] px-4 py-20 sm:px-6 lg:px-8"
+      className="border-t border-white/5 bg-[#040814] px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
       strength={56}
     >
       <motion.div
-        className="mx-auto max-w-6xl rounded-3xl border border-white/10 bg-gradient-to-b from-[#0a1228] to-[#040814] p-8 text-white shadow-[0_24px_80px_-36px_rgba(0,0,0,0.75)] sm:p-12"
+        className="mx-auto max-w-6xl rounded-2xl border border-white/10 bg-gradient-to-b from-[#0a1228] to-[#040814] p-5 text-white shadow-[0_24px_80px_-36px_rgba(0,0,0,0.75)] sm:rounded-3xl sm:p-8 md:p-12"
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"

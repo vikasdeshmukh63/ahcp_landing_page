@@ -46,8 +46,14 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.25 }}
         >
           <motion.div variants={staggerItem} className="flex items-center gap-2.5">
-            <img src="/logo.png" alt="ETIP" width={100} height={100} />
-            <span className="text-lg font-bold tracking-tight text-white">
+            <img
+              src="/logo.png"
+              alt="ETIP"
+              width={72}
+              height={72}
+              className="h-14 w-auto sm:h-16 md:h-[4.5rem]"
+            />
+            <span className="text-base font-bold tracking-tight text-white sm:text-lg">
               Enterprise Talent <br />Intelligence Platform
             </span>
           </motion.div>

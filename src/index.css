@@ -8,16 +8,25 @@
 @layer base {
   html {
     @apply scroll-smooth font-sans;
+    overflow-x: clip;
   }
 
   body {
     @apply m-0 min-h-screen font-sans antialiased;
+    overflow-x: clip;
     background-color: var(--app-bg);
     color: var(--app-fg);
   }
 
   #root {
     @apply min-h-screen w-full max-w-none border-0 text-left;
+    overflow-x: clip;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
   }
   .theme {
 
@@ -189,10 +198,24 @@
   animation-play-state: paused;
 }
 
+@media (max-width: 639px) {
+  .marquee-track {
+    animation-duration: 36s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
   }
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+
+.safe-right {
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
 }
 
 @keyframes fade-up {
@@ -257,5 +280,16 @@
   .animate-float-gentle,
   .animate-pulse-soft {
     animation: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .touch-scroll-x {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .touch-scroll-x::-webkit-scrollbar {
+    display: none;
   }
 }

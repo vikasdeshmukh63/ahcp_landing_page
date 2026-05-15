@@ -10,8 +10,9 @@ import Pill from "./ui/Pill.jsx";
 import NeuroPatternCanvas from "./NeuroPatternCanvas.jsx";
 import HeroMockGraphs from "./HeroMockGraphs.jsx";
 import { SectionParallaxLayers } from "./ui/ParallaxSection.jsx";
+import { useIsMobile } from "../hooks/useMediaQuery.js";
 import { useSectionParallax } from "../hooks/useSectionParallax.js";
-import { staggerContainer, staggerItem } from "../lib/scrollMotion.js";
+import { staggerContainer, staggerItem, staggerItemReduced } from "../lib/scrollMotion.js";
 
 const hiringStats = [
   {
@@ -137,18 +138,24 @@ export default function Hero() {
   const marqueeCards = [...talentCards, ...talentCards];
   const heroRef = useRef(null);
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const marqueeParallax = useSectionParallax(52);
+  const itemVariant = reduceMotion ? staggerItemReduced : staggerItem;
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 88]);
-  const parallaxScale = useTransform(scrollYProgress, [0, 1], [1.14, 1.02]);
-  const heroBgY = useTransform(scrollYProgress, [0, 1], [0, 72]);
-  const heroAccentY = useTransform(scrollYProgress, [0, 1], [0, 110]);
-  const heroBlueY = useTransform(scrollYProgress, [0, 1], [0, 56]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 36 : 88]);
+  const parallaxScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? [1, 1] : [1.14, 1.02],
+  );
+  const heroBgY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 28 : 72]);
+  const heroAccentY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 40 : 110]);
+  const heroBlueY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 24 : 56]);
 
   return (
     <>
@@ -161,8 +168,8 @@ export default function Hero() {
           {reduceMotion ? (
             <>
               <div className="absolute inset-0 bg-gradient-to-br from-[#071229] via-[#040814] to-[#020510]" />
-              <div className="absolute -right-32 top-0 h-[420px] w-[420px] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl" />
-              <div className="absolute bottom-0 left-0 h-[280px] w-[480px] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl" />
+              <div className="absolute -right-16 top-0 h-[min(72vw,280px)] w-[min(72vw,280px)] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl sm:-right-32 sm:h-[420px] sm:w-[420px]" />
+              <div className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl sm:h-[280px]" />
             </>
           ) : (
             <>
@@ -171,11 +178,11 @@ export default function Hero() {
                 style={{ y: heroBgY }}
               />
               <motion.div
-                className="absolute -right-32 top-0 h-[420px] w-[420px] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl"
+                className="absolute -right-16 top-0 h-[min(72vw,280px)] w-[min(72vw,280px)] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl sm:-right-32 sm:h-[420px] sm:w-[420px]"
                 style={{ y: heroAccentY }}
               />
               <motion.div
-                className="absolute bottom-0 left-0 h-[280px] w-[480px] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl"
+                className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl sm:h-[280px]"
                 style={{ y: heroBlueY }}
               />
             </>
@@ -186,11 +193,11 @@ export default function Hero() {
           {reduceMotion ? (
             <NeuroPatternCanvas className="min-h-screen h-full w-full" />
           ) : (
-            <motion.div
-              className="absolute inset-0 min-h-[115vh] w-full origin-center will-change-transform"
+              <motion.div
+              className="absolute inset-0 min-h-[100vh] w-full origin-center will-change-transform sm:min-h-[115vh]"
               style={{ y: parallaxY, scale: parallaxScale }}
             >
-              <NeuroPatternCanvas className="min-h-[115vh] h-full w-full" />
+              <NeuroPatternCanvas className="min-h-[100vh] h-full w-full sm:min-h-[115vh]" />
             </motion.div>
           )}
         </div>
@@ -200,7 +207,7 @@ export default function Hero() {
           aria-hidden
         />
 
-        <div className="relative z-[3] mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl grid-cols-1 items-center gap-10 py-10 text-left pointer-events-none sm:min-h-[calc(100vh-5rem)] sm:py-14 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="relative z-[3] mx-auto grid min-h-[calc(100dvh-5rem)] w-full max-w-7xl grid-cols-1 items-center gap-8 py-8 text-left pointer-events-none sm:min-h-[calc(100dvh-5.5rem)] sm:gap-10 sm:py-14 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <motion.div
             className="w-full max-w-3xl lg:max-w-none"
             variants={staggerContainer}
@@ -208,27 +215,27 @@ export default function Hero() {
             whileInView="show"
             viewport={{ once: true, amount: 0.45 }}
           >
-            <motion.div variants={staggerItem} className="mb-6 flex justify-start">
+            <motion.div variants={itemVariant} className="mb-6 flex justify-start">
               <Pill className="!border-white/15 !bg-white/[0.06] text-[11px] !text-slate-300 backdrop-blur-sm">
                 AI-powered workflow from requisition to onboarding
               </Pill>
             </motion.div>
             <motion.h1
-              variants={staggerItem}
-              className="text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
+              variants={itemVariant}
+              className="text-balance text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl"
             >
               Start hiring world&apos;s{" "}
               <span className="text-[rgb(var(--accent-rgb))]">top talent</span>
             </motion.h1>
             <motion.p
-              variants={staggerItem}
+              variants={itemVariant}
               className="mt-6 max-w-2xl text-pretty text-base font-bold text-slate-300 sm:text-lg"
             >
               Hire from our pool of 10,000+ vetted developers, designers, and
               marketers.
             </motion.p>
             <motion.div
-              variants={staggerItem}
+              variants={itemVariant}
               className="mt-8 flex flex-wrap justify-start gap-3 pointer-events-auto"
             >
               <Button variant="lime" className="px-8 py-3.5 text-base">
@@ -242,13 +249,13 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              variants={staggerItem}
-              className="pointer-events-auto mt-14 w-full max-w-5xl border-t border-[rgb(var(--accent-rgb))]/35 pt-10"
+              variants={itemVariant}
+              className="pointer-events-auto mt-10 w-full max-w-5xl border-t border-[rgb(var(--accent-rgb))]/35 pt-8 sm:mt-14 sm:pt-10"
             >
-              <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-6 sm:gap-10 lg:grid-cols-4">
                 {hiringStats.map((stat, index) => (
                   <div key={stat.line1} className="min-w-0">
-                    <p className="text-4xl font-bold tabular-nums leading-none text-[rgb(var(--accent-rgb))] sm:text-5xl">
+                    <p className="text-3xl font-bold tabular-nums leading-none text-[rgb(var(--accent-rgb))] sm:text-4xl md:text-5xl">
                       <StatValue
                         target={stat.target}
                         suffix={stat.suffix}
@@ -266,7 +273,9 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <HeroMockGraphs />
+          <div className="pointer-events-auto w-full lg:max-w-none">
+            <HeroMockGraphs />
+          </div>
         </div>
       </section>
 
@@ -303,7 +312,7 @@ export default function Hero() {
               <motion.article
                 key={`${card.name}-${index}`}
                 variants={staggerItem}
-                className="min-w-[260px] rounded-2xl border border-white/10 bg-white/[0.06] p-3 shadow-lg shadow-black/20 backdrop-blur-md"
+                className="min-w-[min(260px,78vw)] rounded-2xl border border-white/10 bg-white/[0.06] p-3 shadow-lg shadow-black/20 backdrop-blur-md sm:min-w-[260px]"
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
               >

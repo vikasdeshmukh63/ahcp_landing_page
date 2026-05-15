@@ -16,8 +16,8 @@ export default function SectionHeading({
 }) {
   const titleClass =
     size === 'lg'
-      ? 'text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl'
-      : 'text-2xl font-bold tracking-tight text-white sm:text-3xl'
+      ? 'text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl'
+      : 'text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl'
 
   return (
     <div className={`space-y-4 ${className}`}>

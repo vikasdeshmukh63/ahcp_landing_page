@@ -64,7 +64,9 @@ export default function NeuroPatternCanvas({ className = "" }) {
       };
     }
 
-    for (let i = 0; i < BASE_NODE_COUNT; i++) nodes.push(createNode());
+    const targetNodes =
+      wrap.clientWidth < 480 ? 180 : wrap.clientWidth < 768 ? 260 : BASE_NODE_COUNT;
+    for (let i = 0; i < targetNodes; i++) nodes.push(createNode());
 
     function makeShader(type, src) {
       const s = gl.createShader(type);
@@ -157,7 +159,8 @@ void main() {
     let lastTime = performance.now();
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const isNarrow = wrap.clientWidth < 768;
+      const dpr = Math.min(window.devicePixelRatio || 1, isNarrow ? 1.25 : 2);
       const w = Math.max(1, Math.floor(wrap.clientWidth * dpr));
       const h = Math.max(1, Math.floor(wrap.clientHeight * dpr));
       if (canvas.width !== w || canvas.height !== h) {
@@ -366,7 +369,7 @@ void main() {
   }, [accent]);
 
   return (
-    <div ref={wrapRef} className={`relative h-full min-h-[280px] w-full ${className}`}>
+    <div ref={wrapRef} className={`relative h-full min-h-[220px] w-full sm:min-h-[280px] ${className}`}>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 block h-full w-full cursor-crosshair"

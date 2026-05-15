@@ -97,7 +97,7 @@ export default function MockChatbot() {
   }
 
   return (
-    <div className="pointer-events-none fixed bottom-0 right-0 z-[100] flex flex-col items-end gap-3 p-4 sm:p-6">
+    <div className="pointer-events-none fixed bottom-0 right-0 z-[100] flex flex-col items-end gap-3 p-3 safe-bottom safe-right sm:p-6">
       <div
         role="dialog"
         aria-modal="false"

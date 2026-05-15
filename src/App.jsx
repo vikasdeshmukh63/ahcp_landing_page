@@ -36,7 +36,7 @@ export default function App() {
 
   return (
     <AccentThemeProvider accent={activeTheme.accent}>
-      <div className="min-h-screen bg-[var(--app-bg)] text-[var(--app-fg)]">
+      <div className="min-h-screen overflow-x-clip bg-[var(--app-bg)] text-[var(--app-fg)]">
         <Navbar activeThemeLabel={activeTheme.label} onThemeToggle={handleThemeToggle} />
         <main>
           <Hero />

@@ -152,7 +152,7 @@ export default function AdaptiveAssessments() {
         </motion.div>
 
         <motion.div
-          className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          className="touch-scroll-x -mx-1 mt-8 flex items-center justify-start gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-visible sm:pb-0"
           {...scrollCardMotion()}
         >
           {aptitudeTabs.map(({ id, label, Icon }) => {
@@ -162,7 +162,7 @@ export default function AdaptiveAssessments() {
                 key={id}
                 type="button"
                 onClick={() => setTabId(id)}
-                className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition sm:px-4 sm:text-sm ${
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition sm:px-4 sm:text-sm ${
                   active
                     ? 'border-transparent bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))] shadow-lg shadow-[rgb(var(--accent-rgb))]/25'
                     : 'border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-slate-200'

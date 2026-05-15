@@ -81,7 +81,7 @@ export default function Lifecycle() {
             </svg>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 md:grid-cols-4 lg:grid-cols-7">
             {candidateLifecycleSteps.map((step) => {
               const Icon = iconMap[step.icon] || Upload
 
