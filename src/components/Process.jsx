@@ -50,53 +50,53 @@ export default function Process() {
           ))}
         </div>
 
-        <div className="relative mt-16 space-y-16 lg:space-y-20">
-          <div
-            className="pointer-events-none absolute left-[15px] top-6 hidden h-[calc(100%-2rem)] w-px bg-white/10 md:block lg:left-[19px]"
-            aria-hidden
-          />
-
-          {processSteps.map((step, index) => (
-            <motion.div
-              key={step.id}
-              className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-center lg:gap-16"
-              {...scrollCardMotion()}
-            >
-              <div className="relative flex gap-6 md:gap-8">
-                <div className="relative z-10 flex flex-col items-center">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))] text-sm font-bold text-[rgb(var(--accent-contrast-rgb))] shadow-sm ring-4 ring-[#040814]">
-                    {step.id}
-                  </span>
-                  {index < processSteps.length - 1 ? (
-                    <span
-                      className="mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#0c1426] text-[rgb(var(--accent-rgb))] md:hidden"
-                      aria-hidden
-                    >
-                      <Check className="h-4 w-4" strokeWidth={2.5} />
-                    </span>
-                  ) : null}
-                </div>
-                <div className="pb-2 pt-0.5">
-                  <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-
+        <div className="mt-16 space-y-16 lg:space-y-20">
+          {processSteps.map((step, index) => {
+            const imageRight = index % 2 === 0
+            return (
               <motion.div
-                className="mx-auto w-full max-w-md"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.25 }}
+                key={step.id}
+                className="grid gap-10 md:grid-cols-2 md:items-center lg:gap-16"
+                {...scrollCardMotion()}
               >
-                <img
-                  src={step.illustration[accent]}
-                  alt={step.title}
-                  className="h-full w-full rounded-2xl border border-[rgb(var(--accent-rgb))]/35 object-cover shadow-[0_0_0_1px_rgba(var(--accent-rgb),0.12),0_20px_50px_-20px_rgba(0,0,0,0.5),0_0_40px_-12px_rgba(var(--accent-rgb),0.15)]"
-                />
+                <div
+                  className={`flex min-w-0 items-start gap-6 md:gap-8 ${imageRight ? 'md:order-1' : 'md:order-2'}`}
+                >
+                  <div className="relative flex w-10 shrink-0 flex-col items-center">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))] text-sm font-bold text-[rgb(var(--accent-contrast-rgb))] shadow-sm ring-4 ring-[#040814]">
+                      {step.id}
+                    </span>
+                    {index < processSteps.length - 1 ? (
+                      <span
+                        className="mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#0c1426] text-[rgb(var(--accent-rgb))] md:hidden"
+                        aria-hidden
+                      >
+                        <Check className="h-4 w-4" strokeWidth={2.5} />
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="min-w-0 flex-1 pb-2">
+                    <h3 className="text-2xl font-bold leading-tight text-white">{step.title}</h3>
+                    <p className="mt-3 max-w-xl text-lg leading-relaxed text-slate-400">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+
+                <motion.div
+                  className={`mx-auto w-full max-w-md ${imageRight ? 'md:order-2' : 'md:order-1'}`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <img
+                    src={step.illustration[accent]}
+                    alt={step.title}
+                    className="h-full w-full rounded-2xl border border-[rgb(var(--accent-rgb))]/35 object-cover shadow-[0_0_0_1px_rgba(var(--accent-rgb),0.12),0_20px_50px_-20px_rgba(0,0,0,0.5),0_0_40px_-12px_rgba(var(--accent-rgb),0.15)]"
+                  />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </ParallaxSection>

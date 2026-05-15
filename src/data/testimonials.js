@@ -35,7 +35,7 @@ export const testimonialFaces = [
 export const testimonialQuotes = [
   {
     quote:
-      'Pixel cut our time-to-hire in half. Every candidate showed up prepared and aligned with our stack.',
+      'Enterprise Talent Intelligence Platform cut our time-to-hire in half. Every candidate showed up prepared and aligned with our stack.',
     name: 'Sarah Kim',
     role: 'VP Engineering, Northwind',
     tint:

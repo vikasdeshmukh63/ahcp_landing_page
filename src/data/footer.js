@@ -26,7 +26,7 @@ export const footerColumns = [
   {
     title: 'Contact',
     links: [
-      { label: 'hello@pixelhire.com', href: 'mailto:hello@pixelhire.com' },
+      { label: 'hello@etip.com', href: 'mailto:hello@etip.com' },
       { label: 'Support', href: '#support' },
       { label: 'Partnerships', href: '#partners' },
     ],

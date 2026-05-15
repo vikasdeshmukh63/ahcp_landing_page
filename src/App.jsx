@@ -3,6 +3,7 @@ import { AccentThemeProvider } from './context/AccentThemeContext.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import AIInterviewPanel from './components/AIInterviewPanel.jsx'
+import AdaptiveAssessments from './components/AdaptiveAssessments.jsx'
 import Features from './components/Features.jsx'
 import Pillars from './components/Pillars.jsx'
 import Lifecycle from './components/Lifecycle.jsx'
@@ -40,6 +41,7 @@ export default function App() {
         <main>
           <Hero />
           <AIInterviewPanel />
+          <AdaptiveAssessments />
           <Features />
           <Pillars />
           <Lifecycle />

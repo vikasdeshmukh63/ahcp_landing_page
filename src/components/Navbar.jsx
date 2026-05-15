@@ -17,13 +17,13 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
       transition={{ duration: 0.55, ease: 'easeOut' }}
     >
       <motion.div
-        className="mx-auto w-full max-w-5xl rounded-full border border-white/10 bg-[#060d1f]/85 p-2 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.65)] backdrop-blur-md"
+        className="mx-auto w-full max-w-7xl rounded-full border border-white/10 bg-[#060d1f]/85 p-2 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.65)] backdrop-blur-md"
         whileHover={{ y: -2 }}
         transition={{ duration: 0.25 }}
       >
         <nav className="flex items-center justify-between gap-4">
           <motion.a href="#top" className="flex h-12 items-center rounded-full px-4 text-lg font-bold tracking-tight text-white" whileHover={{ scale: 1.04 }}>
-            ETIP
+            <img src="/logo.png" alt="ETIP" width={65} height={65} />
           </motion.a>
           <div className="hidden items-center gap-2 md:flex">
             {navLinks.map((link) => (

@@ -46,8 +46,9 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.25 }}
         >
           <motion.div variants={staggerItem} className="flex items-center gap-2.5">
+            <img src="/logo.png" alt="ETIP" width={100} height={100} />
             <span className="text-lg font-bold tracking-tight text-white">
-              ETIP
+              Enterprise Talent <br />Intelligence Platform
             </span>
           </motion.div>
 
@@ -55,7 +56,7 @@ export default function Footer() {
             variants={staggerItem}
             className="text-center text-sm text-slate-400 md:flex-1"
           >
-            © {new Date().getFullYear()} Pixel. All rights reserved.
+            © {new Date().getFullYear()} Enterprise Talent Intelligence Platform. All rights reserved.
             <span className="mx-2 hidden sm:inline">·</span>
             <span className="mt-2 flex flex-wrap justify-center gap-4 sm:mt-0 sm:inline-flex">
               {socialLinks.map((s) => (
@@ -99,7 +100,7 @@ export default function Footer() {
         className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 select-none text-[clamp(4rem,18vw,14rem)] font-black leading-none tracking-tighter text-white/[0.04]"
         aria-hidden
       >
-        ETIP
+        ESDS
       </p>
     </footer>
   )
