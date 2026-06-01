@@ -84,40 +84,37 @@ export default function HeroMockGraphs() {
       viewport={{ once: true, amount: 0.35 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="overflow-hidden rounded-2xl border border-white/12 bg-[#060d1f]/92 shadow-[0_24px_64px_-28px_rgba(0,0,0,0.75)] backdrop-blur-md ring-1 ring-[rgb(var(--accent-rgb))]/15">
-        {/* Header */}
-        <header className="flex items-center gap-2 border-b border-white/10 px-3.5 py-3 sm:px-4">
+      <div className="overflow-hidden rounded-xl border border-[rgb(var(--navy-rgb))]/12 bg-white shadow-[0_8px_40px_-16px_rgba(26,43,74,0.18)] ring-1 ring-[rgb(var(--accent-rgb))]/10">
+        <header className="flex items-center gap-2 border-b border-[rgb(var(--navy-rgb))]/10 px-3.5 py-3 sm:px-4">
           <div className="min-w-[2.75rem] flex-1" aria-hidden />
-          <p className="min-w-0 flex-[2] truncate text-center text-[11px] font-semibold text-white sm:text-xs">
+          <p className="min-w-0 flex-[2] truncate text-center font-functional text-[11px] font-semibold text-esds-navy sm:text-xs">
             Hiring plan · Q1 rollout
           </p>
           <div className="flex min-w-[2.75rem] flex-1 justify-end">
-            <span className="rounded-full border border-[rgb(var(--accent-rgb))]/45 bg-[rgb(var(--accent-rgb))]/10 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[rgb(var(--accent-rgb))]">
+            <span className="rounded-full border border-[rgb(var(--emerald-rgb))]/35 bg-[rgb(var(--emerald-rgb))]/10 px-2.5 py-0.5 font-functional text-[9px] font-bold uppercase tracking-wider text-[rgb(var(--emerald-rgb))]">
               Live
             </span>
           </div>
         </header>
 
-        {/* KPI row — Graph 1 */}
         <div className="grid grid-cols-2 gap-2.5 p-3.5 sm:grid-cols-4 sm:gap-3 sm:p-4">
           {kpis.map((k) => (
             <div
               key={k.key}
-              className="rounded-xl border border-white/10 bg-white/[0.05] px-3 py-3 sm:px-3.5"
+              className="rounded-lg border border-[rgb(var(--navy-rgb))]/8 bg-esds-ivory px-3 py-3 sm:px-3.5"
             >
-              <p className="text-xl font-bold tabular-nums leading-tight text-white">
+              <p className="font-functional text-xl font-bold tabular-nums leading-tight text-esds-navy">
                 {k.format(k.value)}
               </p>
-              <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-500 sm:text-[11px]">
+              <p className="mt-1 font-functional text-[10px] font-medium uppercase tracking-wide text-esds-ink/55 sm:text-[11px]">
                 {k.label}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Horizontal bars — Graph 2 */}
-        <div className="border-t border-white/10 px-3.5 pb-4 pt-3 sm:px-4 sm:pb-5">
-          <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+        <div className="border-t border-[rgb(var(--navy-rgb))]/10 px-3.5 pb-4 pt-3 sm:px-4 sm:pb-5">
+          <p className="mb-3.5 font-functional text-[10px] font-bold uppercase tracking-[0.14em] text-esds-ink/50">
             Headcount by team
           </p>
           <div className="flex flex-col gap-3">
@@ -126,20 +123,20 @@ export default function HeroMockGraphs() {
               return (
                 <div
                   key={row.label}
-                  className="grid grid-cols-[minmax(0,32%)_1fr_auto] items-center gap-x-2 text-[11px] sm:gap-x-3 sm:text-xs"
+                  className="grid grid-cols-[minmax(0,32%)_1fr_auto] items-center gap-x-2 font-functional text-[11px] sm:gap-x-3 sm:text-xs"
                 >
-                  <span className="truncate text-left font-medium text-slate-400">
+                  <span className="truncate text-left font-medium text-esds-navy/70">
                     {row.label}
                   </span>
                   <div className="min-w-0">
-                    <div className="h-2.5 overflow-hidden rounded-full bg-white/[0.08] sm:h-3">
+                    <div className="h-2.5 overflow-hidden rounded-full bg-esds-navy/[0.06] sm:h-3">
                       <div
-                        className="h-full rounded-full bg-[rgb(var(--accent-rgb))] shadow-[0_0_12px_-2px_rgba(var(--accent-rgb),0.65)] transition-[width] duration-300 ease-out"
+                        className="h-full rounded-full bg-[rgb(var(--accent-rgb))] transition-[width] duration-300 ease-out"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
                   </div>
-                  <span className="shrink-0 tabular-nums text-right font-semibold text-slate-300">
+                  <span className="shrink-0 tabular-nums text-right font-semibold text-esds-navy">
                     {row.current}/{row.total}
                   </span>
                 </div>

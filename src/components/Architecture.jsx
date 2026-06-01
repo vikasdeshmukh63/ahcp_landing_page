@@ -6,11 +6,7 @@ import { scrollCardMotion, staggerContainer, staggerItem } from '../lib/scrollMo
 
 export default function Architecture() {
   return (
-    <ParallaxSection
-      id="architecture"
-      className="border-t border-white/5 bg-[#050a18] px-4 py-20 sm:px-6 lg:px-8"
-      strength={64}
-    >
+    <ParallaxSection id="architecture" className="esds-section" strength={64}>
       <div className="mx-auto max-w-7xl">
         <motion.div
           variants={staggerContainer}
@@ -32,17 +28,17 @@ export default function Architecture() {
           {autonomousModules.map((module, index) => (
             <motion.article
               key={module.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 shadow-lg shadow-black/20 backdrop-blur-sm hover:border-[rgb(var(--accent-rgb))] hover:shadow-xl"
+              className="esds-card p-5"
               {...scrollCardMotion()}
               whileHover={{ y: -4 }}
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-[rgb(var(--accent-rgb))]">
+              <p className="esds-eyebrow text-[10px]">
                 Module {String(index + 1).padStart(2, '0')}
               </p>
-              <h3 className="mt-2 text-base font-bold leading-snug text-white">
+              <h3 className="mt-2 font-editorial text-base font-semibold leading-snug text-esds-navy">
                 {module.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{module.summary}</p>
+              <p className="mt-2 font-functional text-sm leading-relaxed text-esds-ink/70">{module.summary}</p>
             </motion.article>
           ))}
         </div>

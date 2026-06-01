@@ -4,56 +4,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        esds: {
+          white: '#FFFFFF',
+          ivory: '#FAF7F2',
+          saffron: '#E87722',
+          'saffron-deep': '#C95F0E',
+          'solar-dawn': '#FFA940',
+          emerald: '#0F7B3E',
+          sage: '#2E9D5F',
+          'emerald-deep': '#0A5C2D',
+          navy: '#1A2B4A',
+          ink: '#0D1B3A',
+          gold: '#C9A961',
+          sandalwood: '#E8D094',
+          teal: '#0EA5E9',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground, var(--foreground)))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-        cream: '#F5F1E8',
-        card: '#FBF8F0',
-        lime: '#C8F23A',
-        ink: '#0E0E0E',
-        muted: '#6B6B6B',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Cinzel', 'Times New Roman', 'serif'],
+        editorial: ['Fraunces', 'Georgia', 'serif'],
+        expressive: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        functional: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+        sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+      },
+      maxWidth: {
+        prose: '40ch',
+      },
+      borderRadius: {
+        esds: '0.5rem',
+        'esds-lg': '0.75rem',
       },
       backgroundImage: {
         'dot-grid':
-          'radial-gradient(circle, rgba(15,15,15,0.08) 1px, transparent 1px)',
-        'dot-grid-dark':
-          'radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)',
+          'radial-gradient(circle, rgba(26,43,74,0.08) 1px, transparent 1px)',
       },
       backgroundSize: {
         dot: '24px 24px',
+      },
+      letterSpacing: {
+        display: '0.2em',
       },
     },
   },

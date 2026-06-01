@@ -6,7 +6,7 @@ export default function FinalCTA() {
   return (
     <ParallaxSection
       id="cta"
-      className="border-t border-white/5 bg-[#040814] bg-dot-grid-dark bg-dot-size-dot px-4 py-20 sm:px-6 lg:px-8"
+      className="esds-section-alt bg-dot-grid bg-dot-size-dot"
       strength={52}
     >
       <motion.div
@@ -19,16 +19,17 @@ export default function FinalCTA() {
           show: { transition: { staggerChildren: 0.16, delayChildren: 0.06 } },
         }}
       >
+        <div className="esds-divider-gold mx-auto mb-8 max-w-xs" aria-hidden />
         <motion.h2
-          className="text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl"
+          className="font-display text-balance text-3xl font-semibold uppercase tracking-display text-esds-navy sm:text-4xl md:text-5xl"
           variants={{ hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           Ready to launch your{' '}
-          <span className="text-[rgb(var(--accent-rgb))]">Autonomous hiring workflow?</span>
+          <span className="text-[rgb(var(--accent-rgb))]">autonomous hiring workflow?</span>
         </motion.h2>
         <motion.p
-          className="mx-auto mt-5 max-w-lg text-slate-400"
+          className="mx-auto mt-5 max-w-lg font-functional text-esds-ink/70"
           variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -40,7 +41,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-            <Button variant="lime" className="px-10 py-3.5 text-base">
+            <Button variant="primary" className="px-10 py-3.5 text-base">
               Request Platform Walkthrough
             </Button>
           </motion.div>

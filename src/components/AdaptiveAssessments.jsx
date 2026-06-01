@@ -29,13 +29,13 @@ const tabTitleById = Object.fromEntries(
 )
 
 const imageGradient = {
-  sky: 'from-[rgb(var(--accent-rgb))]/25 via-slate-500/10 to-transparent',
-  emerald: 'from-emerald-400/20 via-slate-500/10 to-transparent',
+  sky: 'from-[rgb(var(--accent-rgb))]/15 via-esds-ivory to-transparent',
+  emerald: 'from-[rgb(var(--emerald-rgb))]/15 via-esds-ivory to-transparent',
 }
 
 const tagClass = {
   sky: 'text-[rgb(var(--accent-rgb))]',
-  emerald: 'text-emerald-400',
+  emerald: 'text-[rgb(var(--emerald-rgb))]',
 }
 
 export default function AdaptiveAssessments() {
@@ -68,11 +68,7 @@ export default function AdaptiveAssessments() {
   }, [])
 
   return (
-    <ParallaxSection
-      id="aptitude"
-      className="border-t border-white/5 bg-[#040814] px-4 py-20 sm:px-6 lg:px-8"
-      strength={64}
-    >
+    <ParallaxSection id="aptitude" className="esds-section-alt" strength={64}>
       <div className="mx-auto max-w-6xl">
         <motion.div
           className="mx-auto max-w-3xl text-center"
@@ -86,12 +82,12 @@ export default function AdaptiveAssessments() {
               eyebrow="Adaptive Assessments"
               title="5-Tab Smart"
               highlight="Aptitude"
-              className="[&_h2]:text-center"
+              className="[&_h2]:mx-auto [&_h2]:text-center"
             />
           </motion.div>
           <motion.p
             variants={staggerItem}
-            className="mt-4 text-sm text-slate-400 sm:text-base"
+            className="mt-4 font-functional text-sm text-esds-ink/70 sm:text-base"
           >
             Questions adapt in real-time based on candidate role and skill level
           </motion.p>
@@ -105,14 +101,14 @@ export default function AdaptiveAssessments() {
           <button
             type="button"
             onClick={() => setMenuOpen((o) => !o)}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm text-white shadow-sm backdrop-blur-sm transition hover:border-[rgb(var(--accent-rgb))]/40"
+            className="inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--navy-rgb))]/15 bg-white px-5 py-2.5 font-functional text-sm text-esds-navy shadow-sm transition hover:border-[rgb(var(--accent-rgb))]/35"
             aria-expanded={menuOpen}
             aria-haspopup="listbox"
           >
-            <span className="text-slate-500">ROLE:</span>
-            <span className="font-semibold text-slate-200">{roleLabel}</span>
+            <span className="text-esds-ink/50">ROLE:</span>
+            <span className="font-semibold">{roleLabel}</span>
             <ChevronDown
-              className={`h-4 w-4 text-slate-500 transition ${menuOpen ? 'rotate-180' : ''}`}
+              className={`h-4 w-4 text-esds-ink/50 transition ${menuOpen ? 'rotate-180' : ''}`}
               aria-hidden
             />
           </button>
@@ -124,7 +120,7 @@ export default function AdaptiveAssessments() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.18 }}
-                className="absolute top-full z-20 mt-2 w-full min-w-[240px] overflow-hidden rounded-xl border border-white/10 bg-[#0c1426] p-1 shadow-[0_20px_50px_-18px_rgba(0,0,0,0.75)]"
+                className="absolute top-full z-20 mt-2 w-full min-w-[240px] overflow-hidden rounded-lg border border-[rgb(var(--navy-rgb))]/10 bg-white p-1 shadow-lg"
               >
                 {aptitudeRoles.map((r) => (
                   <li key={r.id}>
@@ -136,10 +132,10 @@ export default function AdaptiveAssessments() {
                         setRoleId(r.id)
                         setMenuOpen(false)
                       }}
-                      className={`flex w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition ${
+                      className={`flex w-full rounded-md px-3 py-2.5 text-left font-functional text-sm font-medium transition ${
                         r.id === roleId
-                          ? 'bg-[rgb(var(--accent-rgb))]/15 text-[rgb(var(--accent-rgb))]'
-                          : 'text-slate-300 hover:bg-white/5'
+                          ? 'bg-[rgb(var(--accent-rgb))]/10 text-[rgb(var(--accent-rgb))]'
+                          : 'text-esds-ink/80 hover:bg-esds-ivory'
                       }`}
                     >
                       {r.label}
@@ -162,10 +158,10 @@ export default function AdaptiveAssessments() {
                 key={id}
                 type="button"
                 onClick={() => setTabId(id)}
-                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition sm:px-4 sm:text-sm ${
+                className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 font-functional text-xs font-semibold transition sm:px-4 sm:text-sm ${
                   active
-                    ? 'border-transparent bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))] shadow-lg shadow-[rgb(var(--accent-rgb))]/25'
-                    : 'border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-slate-200'
+                    ? 'border-transparent bg-[rgb(var(--accent-rgb))] text-white shadow-sm'
+                    : 'border-[rgb(var(--navy-rgb))]/10 bg-white text-esds-ink/60 hover:border-[rgb(var(--navy-rgb))]/20 hover:text-esds-navy'
                 }`}
               >
                 <Icon className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" strokeWidth={2.2} />
@@ -176,7 +172,7 @@ export default function AdaptiveAssessments() {
         </motion.div>
 
         <motion.div
-          className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_-40px_rgba(0,0,0,0.85)] backdrop-blur-sm sm:p-8"
+          className="mt-10 rounded-xl border border-[rgb(var(--accent-rgb))]/15 bg-white p-6 shadow-sm sm:p-8"
           {...scrollCardMotion()}
         >
           <AnimatePresence mode="wait">
@@ -189,19 +185,19 @@ export default function AdaptiveAssessments() {
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex min-w-0 items-start gap-3">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[rgb(var(--accent-rgb))]/15 text-[rgb(var(--accent-rgb))]">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[rgb(var(--accent-rgb))]/20 bg-[rgb(var(--accent-rgb))]/10 text-[rgb(var(--accent-rgb))]">
                     <ActiveIcon className="h-5 w-5" strokeWidth={2.2} aria-hidden />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg font-bold text-white sm:text-xl">
+                    <h3 className="font-editorial text-lg font-semibold text-esds-navy sm:text-xl">
                       {tabLabel} — {roleLabel}
                     </h3>
-                    <p className="mt-1 text-sm text-slate-400">
+                    <p className="mt-1 font-functional text-sm text-esds-ink/65">
                       AI-generated, adaptive difficulty
                     </p>
                   </div>
                 </div>
-                <span className="shrink-0 self-start rounded-full border border-[rgb(var(--accent-rgb))]/30 bg-[rgb(var(--accent-rgb))]/10 px-3 py-1 text-xs font-semibold text-[rgb(var(--accent-rgb))] sm:self-auto">
+                <span className="shrink-0 self-start rounded-full border border-[rgb(var(--accent-rgb))]/25 bg-[rgb(var(--accent-rgb))]/10 px-3 py-1 font-functional text-xs font-semibold text-[rgb(var(--accent-rgb))] sm:self-auto">
                   {count} {count === 1 ? 'Question' : 'Questions'}
                 </span>
               </div>
@@ -209,28 +205,28 @@ export default function AdaptiveAssessments() {
               <ul className="mt-8 space-y-3">
                 {questions.map((q, i) => (
                   <li key={i}>
-                    <div className="rounded-2xl border border-white/10 bg-[#0c1426]/80 p-4">
+                    <div className="rounded-lg border border-[rgb(var(--navy-rgb))]/10 bg-esds-ivory/80 p-4">
                       <div className="flex gap-3">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))]/20 text-xs font-bold text-[rgb(var(--accent-rgb))]">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))]/12 font-functional text-xs font-bold text-[rgb(var(--accent-rgb))]">
                           {i + 1}
                         </span>
-                        <p className="min-w-0 pt-0.5 text-sm leading-relaxed text-slate-200 sm:text-base">
+                        <p className="min-w-0 pt-0.5 font-functional text-sm leading-relaxed text-esds-ink sm:text-base">
                           {q.text}
                         </p>
                       </div>
                       {q.image ? (
                         <div
-                          className={`mt-4 overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b p-4 ${imageGradient[q.image.variant]}`}
+                          className={`mt-4 overflow-hidden rounded-lg border border-[rgb(var(--navy-rgb))]/10 bg-gradient-to-b p-4 ${imageGradient[q.image.variant]}`}
                         >
-                          <div className="rounded-lg bg-white/[0.04] px-3 py-8 text-center">
+                          <div className="rounded-md bg-white px-3 py-8 text-center">
                             <span className="text-2xl" aria-hidden>
                               {q.image.variant === 'sky' ? '⛰️' : '🤝'}
                             </span>
-                            <p className="mt-3 text-sm italic text-slate-400">
+                            <p className="mt-3 font-expressive text-sm italic text-esds-ink/65">
                               {q.image.caption}
                             </p>
                             <p
-                              className={`mt-4 text-sm font-semibold ${tagClass[q.image.variant]}`}
+                              className={`mt-4 font-functional text-sm font-semibold ${tagClass[q.image.variant]}`}
                             >
                               {q.image.tag}
                             </p>
@@ -242,7 +238,7 @@ export default function AdaptiveAssessments() {
                 ))}
               </ul>
 
-              <div className="mt-6 flex gap-3 rounded-2xl border border-[rgb(var(--accent-rgb))]/20 bg-[rgb(var(--accent-rgb))]/10 px-4 py-3 text-sm leading-relaxed text-slate-300">
+              <div className="mt-6 flex gap-3 rounded-lg border border-[rgb(var(--accent-rgb))]/20 bg-[rgb(var(--accent-rgb))]/[0.06] px-4 py-3 font-functional text-sm leading-relaxed text-esds-ink/80">
                 <Lightbulb
                   className="mt-0.5 h-5 w-5 shrink-0 text-[rgb(var(--accent-rgb))]"
                   strokeWidth={2}

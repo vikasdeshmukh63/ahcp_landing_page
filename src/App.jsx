@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { AccentThemeProvider } from './context/AccentThemeContext.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -14,30 +13,11 @@ import FinalCTA from './components/FinalCTA.jsx'
 import Footer from './components/Footer.jsx'
 import MockChatbot from './components/MockChatbot.jsx'
 
-const accentThemes = [
-  { accent: 'blue', label: 'Blue' },
-  { accent: 'lime', label: 'Lime' },
-]
-
 export default function App() {
-  const [themeIndex, setThemeIndex] = useState(0)
-
-  const activeTheme = accentThemes[themeIndex]
-
-  useEffect(() => {
-    const root = document.documentElement
-    root.classList.add('dark')
-    root.setAttribute('data-accent', activeTheme.accent)
-  }, [activeTheme])
-
-  function handleThemeToggle() {
-    setThemeIndex((prev) => (prev + 1) % accentThemes.length)
-  }
-
   return (
-    <AccentThemeProvider accent={activeTheme.accent}>
+    <AccentThemeProvider accent="saffron">
       <div className="min-h-screen overflow-x-clip bg-[var(--app-bg)] text-[var(--app-fg)]">
-        <Navbar activeThemeLabel={activeTheme.label} onThemeToggle={handleThemeToggle} />
+        <Navbar />
         <main className="pt-14 sm:pt-16">
           <Hero />
           <AIInterviewPanel />

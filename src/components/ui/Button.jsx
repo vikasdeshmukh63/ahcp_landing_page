@@ -1,6 +1,6 @@
 /**
  * @param {object} props
- * @param {'primary' | 'ghost' | 'dark' | 'lime'} [props.variant='primary']
+ * @param {'primary' | 'secondary' | 'ghost' | 'lime'} [props.variant='primary']
  * @param {string} [props.className]
  * @param {React.ReactNode} props.children
  */
@@ -12,22 +12,23 @@ export default function Button({
   ...rest
 }) {
   const base =
-    'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))]'
+    'inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg px-6 py-3 font-functional text-[15px] font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))]'
+
+  const resolved = variant === 'lime' ? 'primary' : variant
 
   const variants = {
     primary:
-      'bg-blue-600 text-white shadow-sm active:scale-[0.98]',
+      'bg-esds-saffron text-white shadow-sm hover:bg-esds-saffron-deep active:scale-[0.98]',
+    secondary:
+      'bg-esds-navy text-white shadow-sm hover:bg-esds-ink active:scale-[0.98]',
     ghost:
-      'border border-white/20 bg-white/5 text-white hover:bg-white/10 active:scale-[0.98]',
-    dark: 'bg-blue-900 text-white active:scale-[0.98]',
-    lime:
-      'bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))] shadow-[0_0_24px_-8px_rgba(var(--accent-rgb),0.55)] active:scale-[0.98]',
+      'border border-esds-navy/25 bg-transparent text-esds-navy hover:border-esds-navy/40 hover:bg-esds-navy/[0.04] active:scale-[0.98]',
   }
 
   return (
     <button
       type={type}
-      className={`${base} ${variants[variant]} ${className}`}
+      className={`${base} ${variants[resolved] || variants.primary} ${className}`}
       {...rest}
     >
       {children}

@@ -102,30 +102,30 @@ export default function MockChatbot() {
         role="dialog"
         aria-modal="false"
         aria-labelledby={titleId}
-        className={`pointer-events-auto flex w-[min(calc(100vw-2rem),22rem)] max-h-[min(70vh,28rem)] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-white/15 bg-[var(--app-bg)]/95 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/5 backdrop-blur-md transition-[opacity,transform,visibility] duration-200 dark:border-white/10 ${
+        className={`pointer-events-auto flex w-[min(calc(100vw-2rem),22rem)] max-h-[min(70vh,28rem)] origin-bottom-right flex-col overflow-hidden rounded-xl border border-[rgb(var(--navy-rgb))]/10 bg-white shadow-[0_16px_48px_-16px_rgba(26,43,74,0.2)] transition-[opacity,transform,visibility] duration-200 ${
           open
             ? 'visible translate-y-0 scale-100 opacity-100'
             : 'pointer-events-none invisible translate-y-3 scale-95 opacity-0'
         }`}
       >
-        <header className="flex items-start justify-between gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+        <header className="flex items-start justify-between gap-2 border-b border-[rgb(var(--navy-rgb))]/10 bg-esds-ivory px-4 py-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb))]/20">
-                <Sparkles className="h-4 w-4 text-[rgb(var(--accent-rgb))]" aria-hidden />
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[rgb(var(--teal-rgb))]/12">
+                <Sparkles className="h-4 w-4 text-[rgb(var(--teal-rgb))]" aria-hidden />
               </span>
               <div>
-                <h2 id={titleId} className="truncate text-sm font-semibold text-[var(--app-fg)]">
+                <h2 id={titleId} className="truncate font-functional text-sm font-semibold text-esds-navy">
                   ATS assistant
                 </h2>
-                <p className="text-[11px] text-[var(--app-fg)]/55">Demo · mocked replies</p>
+                <p className="font-functional text-[11px] text-esds-ink/55">Demo · mocked replies</p>
               </div>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-lg p-1.5 text-[var(--app-fg)]/60 transition hover:bg-white/10 hover:text-[var(--app-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
+            className="rounded-lg p-1.5 text-esds-ink/60 transition hover:bg-white hover:text-esds-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
             aria-label="Close chat"
           >
             <X className="h-5 w-5" />
@@ -145,7 +145,7 @@ export default function MockChatbot() {
                 className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-snug ${
                   m.role === 'user'
                     ? 'rounded-br-md bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))]'
-                    : 'rounded-bl-md border border-white/10 bg-white/[0.06] text-[var(--app-fg)]/90'
+                    : 'rounded-bl-md border border-[rgb(var(--navy-rgb))]/10 bg-esds-ivory text-esds-ink'
                 }`}
               >
                 {m.text}
@@ -154,8 +154,8 @@ export default function MockChatbot() {
           ))}
         </div>
 
-        <footer className="border-t border-white/10 bg-white/[0.03] p-3">
-          <div className="flex items-end gap-2 rounded-xl border border-white/12 bg-white/[0.04] p-1.5 focus-within:ring-2 focus-within:ring-[rgb(var(--accent-rgb))]/35">
+        <footer className="border-t border-[rgb(var(--navy-rgb))]/10 bg-white p-3">
+          <div className="flex items-end gap-2 rounded-lg border border-[rgb(var(--navy-rgb))]/12 bg-esds-ivory p-1.5 focus-within:ring-2 focus-within:ring-[rgb(var(--accent-rgb))]/35">
             <textarea
               rows={1}
               value={draft}
@@ -167,7 +167,7 @@ export default function MockChatbot() {
                   sendDraft()
                 }
               }}
-              className="max-h-24 min-h-[2.5rem] w-full resize-none bg-transparent px-2 py-2 text-sm text-[var(--app-fg)] placeholder:text-[var(--app-fg)]/35 focus:outline-none"
+              className="max-h-24 min-h-[2.5rem] w-full resize-none bg-transparent px-2 py-2 font-functional text-sm text-esds-ink placeholder:text-esds-ink/35 focus:outline-none"
             />
             <button
               type="button"
@@ -185,7 +185,7 @@ export default function MockChatbot() {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full shadow-[0_12px_40px_-12px_rgba(var(--accent-rgb),0.85)] ring-4 ring-black/25 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))] ${
+        className={`pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full shadow-[0_12px_32px_-12px_rgba(232,119,34,0.55)] ring-4 ring-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent-rgb))] ${
           open
             ? 'bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))]'
             : 'animate-pulse-soft bg-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-contrast-rgb))]'

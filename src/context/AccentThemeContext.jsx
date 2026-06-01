@@ -1,15 +1,15 @@
 import { createContext, useContext } from 'react'
 
-const AccentThemeContext = createContext('blue')
+const AccentThemeContext = createContext('saffron')
 
-/** @param {{ accent: 'blue' | 'lime', children: import('react').ReactNode }} props */
-export function AccentThemeProvider({ accent, children }) {
+/** @param {{ accent?: 'saffron', children: import('react').ReactNode }} props */
+export function AccentThemeProvider({ accent = 'saffron', children }) {
   return (
     <AccentThemeContext.Provider value={accent}>{children}</AccentThemeContext.Provider>
   )
 }
 
-/** @returns {'blue' | 'lime'} */
+/** @returns {'saffron'} */
 export function useAccentTheme() {
   return useContext(AccentThemeContext)
 }

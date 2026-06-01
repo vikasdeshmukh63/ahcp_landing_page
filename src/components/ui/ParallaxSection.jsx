@@ -12,16 +12,16 @@ export function SectionParallaxLayers({ layerY, blobY }) {
         className="pointer-events-none absolute inset-0 z-0 scale-[1.08]"
         style={{ y: layerY }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--accent-rgb))]/[0.07] via-transparent to-blue-600/[0.09]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--accent-rgb))]/[0.04] via-transparent to-[rgb(var(--emerald-rgb))]/[0.05]" />
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-28 left-[12%] z-0 h-[min(52vw,420px)] w-[min(52vw,420px)] rounded-full bg-[rgb(var(--accent-rgb))]/12 blur-3xl"
+        className="pointer-events-none absolute -top-28 left-[12%] z-0 h-[min(52vw,420px)] w-[min(52vw,420px)] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl"
         style={{ y: blobY }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 right-[-10%] z-0 h-[min(45vw,360px)] w-[min(45vw,360px)] rounded-full bg-blue-600/10 blur-3xl"
+        className="pointer-events-none absolute bottom-0 right-[-10%] z-0 h-[min(45vw,360px)] w-[min(45vw,360px)] rounded-full bg-[rgb(var(--emerald-rgb))]/8 blur-3xl"
         style={{ y: blobY }}
       />
     </>

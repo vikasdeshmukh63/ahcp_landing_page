@@ -1,33 +1,24 @@
 import Button from './ui/Button.jsx'
 import { footerColumns, socialLinks } from '../data/footer.js'
 import { motion } from 'motion/react'
-import { SectionParallaxLayers } from './ui/ParallaxSection.jsx'
-import { useSectionParallax } from '../hooks/useSectionParallax.js'
 import { scrollCardMotion, staggerContainer, staggerItem } from '../lib/scrollMotion.js'
 
 export default function Footer() {
-  const parallax = useSectionParallax(44)
-
   return (
-    <footer
-      ref={parallax.ref}
-      className="relative overflow-hidden border-t border-white/10 bg-[#030510] px-4 pb-12 pt-16 sm:px-6 lg:px-8"
-    >
-      {!parallax.reduceMotion ? (
-        <SectionParallaxLayers layerY={parallax.layerY} blobY={parallax.blobY} />
-      ) : null}
+    <footer className="relative overflow-hidden border-t border-white/10 bg-esds-navy px-4 pb-12 pt-16 text-white sm:px-6 lg:px-8">
+      <div className="esds-divider-gold mx-auto mb-12 max-w-7xl opacity-80" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {footerColumns.map((col) => (
             <motion.div key={col.title} {...scrollCardMotion()}>
-              <p className="text-sm font-bold text-white">{col.title}</p>
+              <p className="font-functional text-sm font-bold text-white">{col.title}</p>
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-slate-400 transition hover:text-[rgb(var(--accent-rgb))]"
+                      className="font-functional text-sm text-white/70 transition hover:text-[rgb(var(--accent-rgb))]"
                     >
                       {link.label}
                     </a>
@@ -48,21 +39,22 @@ export default function Footer() {
           <motion.div variants={staggerItem} className="flex items-center gap-2.5">
             <img
               src="/logo.png"
-              alt="ETIP"
+              alt="ESDS"
               width={72}
               height={72}
               className="h-14 w-auto sm:h-16 md:h-[4.5rem]"
             />
-            <span className="text-base font-bold tracking-tight text-white sm:text-lg">
-              Enterprise Talent <br />Intelligence Platform
+            <span className="font-display text-sm font-semibold uppercase leading-snug tracking-display text-white sm:text-base">
+              Enterprise Talent <br />
+              Intelligence Platform
             </span>
           </motion.div>
 
           <motion.p
             variants={staggerItem}
-            className="text-center text-sm text-slate-400 md:flex-1"
+            className="text-center font-functional text-sm text-white/70 md:flex-1"
           >
-            © {new Date().getFullYear()} Enterprise Talent Intelligence Platform. All rights reserved.
+            © {new Date().getFullYear()} ESDS Software Solution Ltd. All rights reserved.
             <span className="mx-2 hidden sm:inline">·</span>
             <span className="mt-2 flex flex-wrap justify-center gap-4 sm:mt-0 sm:inline-flex">
               {socialLinks.map((s) => (
@@ -71,7 +63,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-slate-300 underline-offset-4 hover:text-[rgb(var(--accent-rgb))] hover:underline"
+                  className="font-medium text-white/80 underline-offset-4 hover:text-[rgb(var(--accent-rgb))] hover:underline"
                 >
                   {s.label}
                 </a>
@@ -93,9 +85,9 @@ export default function Footer() {
               id="newsletter-email"
               type="email"
               placeholder="Work email"
-              className="w-full rounded-full border border-white/15 bg-white/[0.06] px-4 py-2.5 text-sm text-white outline-none ring-0 placeholder:text-slate-500 focus:border-[rgb(var(--accent-rgb))]/40"
+              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 font-functional text-sm text-white outline-none placeholder:text-white/45 focus:border-[rgb(var(--accent-rgb))]/50"
             />
-            <Button type="submit" variant="lime" className="shrink-0 px-5">
+            <Button type="submit" variant="primary" className="shrink-0 px-5">
               Subscribe
             </Button>
           </motion.form>
@@ -103,7 +95,7 @@ export default function Footer() {
       </div>
 
       <p
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 select-none text-[clamp(4rem,18vw,14rem)] font-black leading-none tracking-tighter text-white/[0.04]"
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 select-none font-display text-[clamp(4rem,18vw,14rem)] font-bold uppercase leading-none tracking-display text-white/[0.04]"
         aria-hidden
       >
         ESDS

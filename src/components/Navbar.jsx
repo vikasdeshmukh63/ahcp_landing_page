@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Stories', href: '#stories' },
 ]
 
-export default function Navbar({ activeThemeLabel, onThemeToggle }) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const reduceMotion = useReducedMotion()
 
@@ -36,25 +36,25 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
 
   return (
     <motion.header
-      className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-[#060d1f]/95 backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-50 w-full border-b border-[rgb(var(--navy-rgb))]/10 bg-white/95 backdrop-blur-md"
       initial={reduceMotion ? false : { opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
     >
-      <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between gap-2 sm:gap-4">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between gap-2 py-4 sm:gap-4 sm:py-5">
           <motion.a
             href="#top"
-            className="flex h-10 shrink-0 items-center rounded-full px-2 sm:h-12 sm:px-4"
-            whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+            className="flex h-10 shrink-0 items-center rounded-lg px-2 sm:h-12"
+            whileHover={reduceMotion ? undefined : { scale: 1.02 }}
             onClick={closeMenu}
           >
             <img
               src="/logo.png"
-              alt="ETIP"
+              alt="ESDS"
               width={52}
               height={52}
-              className="h-[80px] w-auto"
+              className="h-12 w-auto sm:h-14"
             />
           </motion.a>
 
@@ -63,7 +63,7 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
               <motion.a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-[rgb(var(--accent-rgb))] lg:px-4"
+                className="rounded-lg px-3 py-2 font-functional text-sm font-semibold text-esds-navy transition hover:text-[rgb(var(--accent-rgb))] lg:px-4"
                 whileHover={reduceMotion ? undefined : { y: -2 }}
                 transition={{ duration: 0.2 }}
               >
@@ -73,22 +73,14 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
           </motion.div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <button
-              type="button"
-              onClick={onThemeToggle}
-              className="rounded-full border border-white/20 bg-white/5 px-2.5 py-1.5 text-[10px] font-semibold text-slate-200 transition hover:border-[rgb(var(--accent-rgb))]/50 hover:text-[rgb(var(--accent-rgb))] sm:px-4 sm:py-2 sm:text-xs"
-              aria-label="Switch accent color (blue or lime)"
-            >
-              {activeThemeLabel}
-            </button>
             <a href="#cta" className="hidden sm:inline">
-              <Button variant="lime" className="h-10 px-4 text-sm sm:h-12 sm:px-6 sm:text-base">
+              <Button variant="primary" className="h-10 px-4 text-sm sm:h-11 sm:px-6">
                 Book Now
               </Button>
             </a>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:bg-white/10 md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-esds-navy/15 text-esds-navy transition hover:bg-esds-ivory md:hidden"
               onClick={() => setMenuOpen((o) => !o)}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
@@ -103,7 +95,7 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
           {menuOpen ? (
             <motion.div
               id="mobile-nav"
-              className="border-t border-white/10 px-2 pb-2 pt-2 md:hidden"
+              className="border-t border-[rgb(var(--navy-rgb))]/10 px-2 pb-4 pt-2 md:hidden"
               initial={reduceMotion ? false : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
@@ -115,15 +107,15 @@ export default function Navbar({ activeThemeLabel, onThemeToggle }) {
                     <a
                       href={link.href}
                       onClick={closeMenu}
-                      className="block rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-[rgb(var(--accent-rgb))]"
+                      className="block rounded-lg px-4 py-3 font-functional text-sm font-semibold text-esds-navy hover:bg-esds-ivory hover:text-[rgb(var(--accent-rgb))]"
                     >
                       {link.label}
                     </a>
                   </li>
                 ))}
-                <li className="pt-1">
+                <li className="pt-2">
                   <a href="#cta" onClick={closeMenu} className="block">
-                    <Button variant="lime" className="w-full py-3 text-base">
+                    <Button variant="primary" className="w-full py-3">
                       Book Now
                     </Button>
                   </a>

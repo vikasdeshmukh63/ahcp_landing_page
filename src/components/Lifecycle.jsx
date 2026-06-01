@@ -25,11 +25,7 @@ const iconMap = {
 
 export default function Lifecycle() {
   return (
-    <ParallaxSection
-      id="lifecycle"
-      className="border-t border-white/5 bg-[#050a18] px-4 py-20 sm:px-6 lg:px-8"
-      strength={70}
-    >
+    <ParallaxSection id="lifecycle" className="esds-section-alt" strength={70}>
       <div className="mx-auto max-w-7xl">
         <motion.div
           className="mx-auto max-w-3xl text-center"
@@ -43,11 +39,12 @@ export default function Lifecycle() {
               eyebrow="Complete Visibility"
               title="7-Step Candidate"
               highlight="Lifecycle"
+              className="[&_h2]:mx-auto"
             />
           </motion.div>
           <motion.p
             variants={staggerItem}
-            className="mt-4 text-sm text-slate-400 sm:text-base"
+            className="mt-4 font-functional text-sm text-esds-ink/70 sm:text-base"
           >
             Track every candidate from application to onboarding, visible to all stakeholders.
           </motion.p>
@@ -61,7 +58,7 @@ export default function Lifecycle() {
                 y1="1"
                 x2="1180"
                 y2="1"
-                stroke="rgba(148,163,184,0.35)"
+                stroke="rgba(26,43,74,0.15)"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -92,11 +89,11 @@ export default function Lifecycle() {
                   {...scrollCardMotion()}
                   whileHover={{ y: -4 }}
                 >
-                  <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#0c1426] text-[rgb(var(--accent-rgb))] shadow-lg shadow-black/30">
+                  <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-xl border border-[rgb(var(--navy-rgb))]/10 bg-white text-[rgb(var(--accent-rgb))] shadow-sm">
                     <Icon className="h-5 w-5" strokeWidth={2.2} aria-hidden />
                   </div>
-                  <h3 className="mt-4 text-sm font-bold text-white">{step.title}</h3>
-                  <p className="mt-1 text-xs text-slate-400">{step.subtitle}</p>
+                  <h3 className="mt-4 font-editorial text-sm font-semibold text-esds-navy">{step.title}</h3>
+                  <p className="mt-1 font-functional text-xs text-esds-ink/60">{step.subtitle}</p>
                 </motion.article>
               )
             })}

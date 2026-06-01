@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useAccentTheme } from "../context/AccentThemeContext.jsx";
 
 const POINT_SIZE = 5;
 const MAX_NODES = 700;
@@ -23,7 +22,6 @@ function rand(lo, hi) {
  * @param {string} [props.className]
  */
 export default function NeuroPatternCanvas({ className = "" }) {
-  const accent = useAccentTheme();
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -105,7 +103,7 @@ uniform vec4 uColor;
 varying vec2 vPos;
 void main() {
     float d = length(vPos);
-    float fade = 1.0 - smoothstep(0.5, 1.0, d);
+    float fade = 1.0 - smoothstep(0.72, 1.0, d);
     if (fade <= 0.001) discard;
     gl_FragColor = vec4(uColor.rgb, uColor.a * fade);
 }`;
@@ -297,13 +295,11 @@ void main() {
       return { nodeCount: n, regularLinkEnd, linkFloatCount: lo };
     }
 
-    const nodeColor =
-      accent === "lime"
-        ? [0.78, 0.98, 0.22, 1.0]
-        : [59 / 255, 130 / 255, 246 / 255, 1.0];
+    const nodeColor = [232 / 255, 119 / 255, 34 / 255, 0.9];
+    const linkColor = [26 / 255, 43 / 255, 74 / 255, 0.42];
 
     function draw({ nodeCount, regularLinkEnd, linkFloatCount }) {
-      gl.clearColor(0.015, 0.03, 0.078, 1.0);
+      gl.clearColor(0.98, 0.968, 0.949, 1.0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       gl.useProgram(lineProg);
@@ -315,16 +311,17 @@ void main() {
       );
       gl.enableVertexAttribArray(lineAPos);
       gl.vertexAttribPointer(lineAPos, 2, gl.FLOAT, false, 0, 0);
+      gl.lineWidth(2);
 
       if (regularLinkEnd > 0) {
-        gl.uniform4f(lineCol, 1.0, 1.0, 1.0, 0.28);
+        gl.uniform4f(lineCol, linkColor[0], linkColor[1], linkColor[2], linkColor[3]);
         gl.drawArrays(gl.LINES, 0, regularLinkEnd / 2);
       }
 
       const cursorLinkStart = regularLinkEnd / 2;
       const cursorLinkCount = (linkFloatCount - regularLinkEnd) / 2;
       if (cursorLinkCount > 0) {
-        gl.uniform4f(lineCol, 1.0, 1.0, 1.0, 0.28);
+        gl.uniform4f(lineCol, linkColor[0], linkColor[1], linkColor[2], linkColor[3]);
         gl.drawArrays(gl.LINES, cursorLinkStart, cursorLinkCount);
       }
 
@@ -366,7 +363,7 @@ void main() {
       canvas.removeEventListener("mouseleave", onLeave);
       canvas.removeEventListener("click", onClick);
     };
-  }, [accent]);
+  }, []);
 
   return (
     <div ref={wrapRef} className={`relative h-full min-h-[220px] w-full sm:min-h-[280px] ${className}`}>

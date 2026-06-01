@@ -162,19 +162,19 @@ export default function Hero() {
       <section
         ref={heroRef}
         id="top"
-        className="relative min-h-screen overflow-hidden bg-[#040814] pb-16 pt-6 text-white sm:pb-20 sm:pt-8"
+        className="relative min-h-screen overflow-hidden bg-esds-ivory pb-16 pt-6 text-esds-ink sm:pb-20 sm:pt-8"
       >
         <div className="pointer-events-none absolute inset-0 opacity-90" aria-hidden>
           {reduceMotion ? (
             <>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#071229] via-[#040814] to-[#020510]" />
-              <div className="absolute -right-16 top-0 h-[min(72vw,280px)] w-[min(72vw,280px)] rounded-full bg-[rgb(var(--accent-rgb))]/8 blur-3xl sm:-right-32 sm:h-[420px] sm:w-[420px]" />
-              <div className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl sm:h-[280px]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white via-esds-ivory to-esds-ivory" />
+              <div className="absolute -right-16 top-0 h-[min(72vw,280px)] w-[min(72vw,280px)] rounded-full bg-[rgb(var(--accent-rgb))]/10 blur-3xl sm:-right-32 sm:h-[420px] sm:w-[420px]" />
+              <div className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-[rgb(var(--emerald-rgb))]/10 to-transparent blur-2xl sm:h-[280px]" />
             </>
           ) : (
             <>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#071229] via-[#040814] to-[#020510]"
+                className="absolute inset-0 bg-gradient-to-br from-white via-esds-ivory to-esds-ivory"
                 style={{ y: heroBgY }}
               />
               <motion.div
@@ -182,7 +182,7 @@ export default function Hero() {
                 style={{ y: heroAccentY }}
               />
               <motion.div
-                className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-blue-600/10 to-transparent blur-2xl sm:h-[280px]"
+                className="absolute bottom-0 left-0 h-[min(40vw,200px)] w-[min(90vw,480px)] bg-gradient-to-tr from-[rgb(var(--emerald-rgb))]/10 to-transparent blur-2xl sm:h-[280px]"
                 style={{ y: heroBlueY }}
               />
             </>
@@ -203,7 +203,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[#040814]/85 via-[#040814]/40 to-[#040814]/15 sm:bg-gradient-to-r sm:from-[#040814]/90 sm:via-[#040814]/35 sm:to-transparent"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white/70 via-esds-ivory/30 to-transparent sm:bg-gradient-to-r sm:from-white/80 sm:via-esds-ivory/25 sm:to-transparent"
           aria-hidden
         />
 
@@ -216,20 +216,20 @@ export default function Hero() {
             viewport={{ once: true, amount: 0.45 }}
           >
             <motion.div variants={itemVariant} className="mb-6 flex justify-start">
-              <Pill className="!border-white/15 !bg-white/[0.06] text-[11px] !text-slate-300 backdrop-blur-sm">
+              <Pill>
                 AI-powered workflow from requisition to onboarding
               </Pill>
             </motion.div>
             <motion.h1
               variants={itemVariant}
-              className="text-balance text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl"
+              className="font-display text-balance text-3xl font-bold uppercase leading-[1.08] tracking-display text-esds-navy sm:text-5xl md:text-6xl"
             >
               Start hiring world&apos;s{" "}
-              <span className="text-[rgb(var(--accent-rgb))]">Top talent</span>
+              <span className="text-[rgb(var(--accent-rgb))]">top talent</span>
             </motion.h1>
             <motion.p
               variants={itemVariant}
-              className="mt-6 max-w-2xl text-pretty text-base font-bold text-slate-300 sm:text-lg"
+              className="mt-6 max-w-2xl text-pretty font-expressive text-lg italic leading-relaxed text-esds-ink/85 sm:text-xl"
             >
               Hire from our pool of 10,000+ vetted developers, designers, and
               marketers.
@@ -238,7 +238,7 @@ export default function Hero() {
               variants={itemVariant}
               className="mt-8 flex flex-wrap justify-start gap-3 pointer-events-auto"
             >
-              <Button variant="lime" className="px-8 py-3.5 text-base">
+              <Button variant="primary" className="px-8 py-3.5 text-base">
                 Hire Talent
               </Button>
               <a href="#ai-panel">
@@ -263,7 +263,7 @@ export default function Hero() {
                         delayMs={index * 100}
                       />
                     </p>
-                    <p className="mt-3 text-sm font-normal leading-snug text-white">
+                    <p className="mt-3 font-functional text-sm font-normal leading-snug text-esds-navy">
                       <span className="block">{stat.line1}</span>
                       <span className="block">{stat.line2}</span>
                     </p>
@@ -273,7 +273,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="pointer-events-auto w-full lg:max-w-none flex justify-end">
+          <div className="pointer-events-auto w-full lg:max-w-none">
             <HeroMockGraphs />
           </div>
         </div>
@@ -281,7 +281,7 @@ export default function Hero() {
 
       <section
         ref={marqueeParallax.ref}
-        className="relative overflow-hidden border-y border-white/10 bg-gradient-to-r from-[#050a18] via-[#071229] to-[#050a18] py-8"
+        className="relative overflow-hidden border-y border-[rgb(var(--navy-rgb))]/10 bg-white py-8"
       >
         {!marqueeParallax.reduceMotion ? (
           <SectionParallaxLayers
@@ -291,7 +291,7 @@ export default function Hero() {
         ) : null}
         <div className="relative z-10 mx-auto mb-4 max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <motion.h1
-            className="text-2xl font-bold tracking-tight text-white"
+            className="font-editorial text-2xl font-semibold text-esds-navy sm:text-3xl"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -312,7 +312,7 @@ export default function Hero() {
               <motion.article
                 key={`${card.name}-${index}`}
                 variants={staggerItem}
-                className="min-w-[min(260px,78vw)] rounded-2xl border border-white/10 bg-white/[0.06] p-3 shadow-lg shadow-black/20 backdrop-blur-md sm:min-w-[260px]"
+                className="min-w-[min(260px,78vw)] rounded-xl border border-[rgb(var(--navy-rgb))]/10 bg-esds-ivory p-3 shadow-[0_4px_20px_-8px_rgba(26,43,74,0.12)] sm:min-w-[260px]"
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
               >
@@ -321,11 +321,11 @@ export default function Hero() {
                     {card.initials}
                   </div>
                   <div className="text-left leading-tight">
-                    <p className="text-sm font-semibold text-white">{card.name}</p>
-                    <p className="text-xs text-[rgb(var(--accent-rgb))]/90">{card.role}</p>
+                    <p className="font-functional text-sm font-semibold text-esds-navy">{card.name}</p>
+                    <p className="font-functional text-xs text-[rgb(var(--emerald-rgb))]">{card.role}</p>
                   </div>
                 </div>
-                <p className="mt-2 text-xs text-slate-400">{card.meta}</p>
+                <p className="mt-2 font-functional text-xs text-esds-ink/65">{card.meta}</p>
               </motion.article>
             ))}
           </motion.div>

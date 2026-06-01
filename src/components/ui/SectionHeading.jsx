@@ -16,16 +16,12 @@ export default function SectionHeading({
 }) {
   const titleClass =
     size === 'lg'
-      ? 'text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl'
-      : 'text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl'
+      ? 'font-display text-balance text-3xl font-semibold uppercase leading-tight tracking-display text-esds-navy sm:text-4xl md:text-5xl'
+      : 'font-display text-2xl font-semibold uppercase leading-tight tracking-display text-esds-navy sm:text-3xl'
 
   return (
     <div className={`space-y-4 ${className}`}>
-      {eyebrow ? (
-        <p className="text-sm font-medium uppercase tracking-wide text-[rgb(var(--accent-rgb))]">
-          {eyebrow}
-        </p>
-      ) : null}
+      {eyebrow ? <p className="esds-eyebrow">{eyebrow}</p> : null}
       <h2 className={titleClass}>
         {title}
         {highlight ? (

@@ -2,20 +2,13 @@ import { Check } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading.jsx'
 import ParallaxSection from './ui/ParallaxSection.jsx'
 import { processSteps } from '../data/process.js'
-import { useAccentTheme } from '../context/AccentThemeContext.jsx'
 import { autonomousStages } from '../data/autonomousFlow.js'
 import { motion } from 'motion/react'
 import { scrollCardMotion, staggerContainer, staggerItem } from '../lib/scrollMotion.js'
 
 export default function Process() {
-  const accent = useAccentTheme()
-
   return (
-    <ParallaxSection
-      id="process"
-      className="border-t border-white/5 bg-[#040814] px-4 py-20 sm:px-6 lg:px-8"
-      strength={80}
-    >
+    <ParallaxSection id="process" className="esds-section-alt" strength={80}>
       <div className="mx-auto max-w-7xl">
         <motion.div
           className="max-w-3xl"
@@ -37,15 +30,13 @@ export default function Process() {
           {autonomousStages.map((stage, index) => (
             <motion.article
               key={stage.id}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm hover:border-[rgb(var(--accent-rgb))]"
+              className="rounded-xl border border-[rgb(var(--navy-rgb))]/10 bg-white p-4 shadow-sm hover:border-[rgb(var(--accent-rgb))]/35"
               {...scrollCardMotion()}
               whileHover={{ y: -4 }}
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-[rgb(var(--accent-rgb))]">
-                Stage {index + 1}
-              </p>
-              <h3 className="mt-1 text-sm font-bold text-white">{stage.title}</h3>
-              <p className="mt-1 text-xs leading-relaxed text-slate-400">{stage.description}</p>
+              <p className="esds-eyebrow text-[10px]">Stage {index + 1}</p>
+              <h3 className="mt-1 font-editorial text-sm font-semibold text-esds-navy">{stage.title}</h3>
+              <p className="mt-1 font-functional text-xs leading-relaxed text-esds-ink/65">{stage.description}</p>
             </motion.article>
           ))}
         </div>
@@ -63,12 +54,12 @@ export default function Process() {
                   className={`flex min-w-0 items-start gap-6 md:gap-8 ${imageRight ? 'md:order-1' : 'md:order-2'}`}
                 >
                   <div className="relative flex w-10 shrink-0 flex-col items-center">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))] text-sm font-bold text-[rgb(var(--accent-contrast-rgb))] shadow-sm ring-4 ring-[#040814]">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb))] font-functional text-sm font-bold text-white shadow-sm ring-4 ring-esds-ivory">
                       {step.id}
                     </span>
                     {index < processSteps.length - 1 ? (
                       <span
-                        className="mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#0c1426] text-[rgb(var(--accent-rgb))] md:hidden"
+                        className="mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-[rgb(var(--navy-rgb))]/15 bg-white text-[rgb(var(--accent-rgb))] md:hidden"
                         aria-hidden
                       >
                         <Check className="h-4 w-4" strokeWidth={2.5} />
@@ -76,8 +67,8 @@ export default function Process() {
                     ) : null}
                   </div>
                   <div className="min-w-0 flex-1 pb-2">
-                    <h3 className="text-2xl font-bold leading-tight text-white">{step.title}</h3>
-                    <p className="mt-3 max-w-xl text-lg leading-relaxed text-slate-400">
+                    <h3 className="font-editorial text-2xl font-semibold leading-tight text-esds-navy">{step.title}</h3>
+                    <p className="mt-3 max-w-xl font-functional text-lg leading-relaxed text-esds-ink/70">
                       {step.description}
                     </p>
                   </div>
@@ -89,9 +80,9 @@ export default function Process() {
                   transition={{ duration: 0.25 }}
                 >
                   <img
-                    src={step.illustration[accent]}
+                    src={step.illustration.blue}
                     alt={step.title}
-                    className="h-auto max-h-[min(56vw,320px)] w-full rounded-2xl border border-[rgb(var(--accent-rgb))] object-cover shadow-[0_0_0_1px_rgba(var(--accent-rgb),0.12),0_20px_50px_-20px_rgba(0,0,0,0.5),0_0_40px_-12px_rgba(var(--accent-rgb),0.15)] sm:max-h-none"
+                    className="h-auto max-h-[min(56vw,320px)] w-full rounded-xl border border-[rgb(var(--navy-rgb))]/10 object-cover shadow-[0_12px_40px_-20px_rgba(26,43,74,0.2)] sm:max-h-none"
                   />
                 </motion.div>
               </motion.div>
